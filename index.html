@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobster - Find the Perfect Job for You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .category-card:hover {
+            background-color: #e0f0ff;
+        }
+        
+        .job-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+        }
+        
+        .dot-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            margin: 0 4px;
+        }
+        
+        .dot-active {
+            background-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-xl font-bold text-gray-800">Jobster</h1>
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Demos</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Find Jobs</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Companies</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Candidates</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Blog</a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 font-medium nav-link">Pages</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative gradient-bg py-16 overflow-hidden">
+        <div class="absolute right-0 top-0 w-full h-full">
+            <div class="absolute right-0 top-0 w-96 h-96 bg-blue-900 rounded-full opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute right-0 top-0 w-64 h-64 bg-blue-800 rounded-full opacity-30 transform translate-x-1/3 -translate-y-1/3"></div>
+            <div class="absolute right-0 top-0 w-32 h-32 bg-blue-700 rounded-full opacity-40 transform translate-x-1/4 -translate-y-1/4"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+                        Find the perfect job for you
+                    </h1>
+                    <p class="text-lg text-gray-600">
+                        Search your career opportunity through 12,800 jobs
+                    </p>
+                    
+                    <!-- Search Form -->
+                    <div class="bg-white rounded-lg p-4 shadow-md">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="text" placeholder="Job Title or Keyword" class="flex-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 search-input">
+                            
+                            <div class="relative">
+                                <select class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 search-input">
+                                    <option>All Locations</option>
+                                    <option>New York</option>
+                                    <option>San Francisco</option>
+                                    <option>Los Angeles</option>
+                                    <option>Chicago</option>
+                                </select>
+                            </div>
+                            
+                            <button class="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Popular Searches -->
+                    <div class="pt-4">
+                        <h3 class="text-sm font-medium text-gray-600 mb-3">Popular Searches</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Designer</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Writer</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Team Leader</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Fullstack</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Web Developer</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Senior</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Financial Analyst</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Software</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Web</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs">Tech</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Company Logos -->
+                    <div class="pt-6 flex flex-wrap gap-6 items-center">
+                        <div class="text-gray-400 text-xs">Trusted by</div>
+                        <div class="flex gap-6">
+                            <div class="h-6 w-16 bg-gray-200 rounded"></div>
+                            <div class="h-6 w-16 bg-gray-200 rounded"></div>
+                            <div class="h-6 w-16 bg-gray-200 rounded"></div>
+                            <div class="h-6 w-16 bg-gray-200 rounded"></div>
+                            <div class="h-6 w-16 bg-gray-200 rounded"></div>
+                            <div class="h-6 w-16 bg-gray-200 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 relative">
+                    <div class="relative">
+                        <div class="absolute -top-8 -right-8 w-64 h-64 bg-blue-500 rounded-full opacity-20"></div>
+                        <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-blue-400 rounded-full opacity-20"></div>
+                        
+                        <div class="relative z-10">
+                            <img src="https://placehold.co/400x500/1f2937/FFFFFF?text=Professional" alt="Professional woman" class="rounded-2xl shadow-xl">
+                            
+                            <!-- Stats Card -->
+                            <div class="absolute top-4 right-4 bg-white rounded-xl p-4 shadow-lg">
+                                <div class="space-y-3">
+                                    <div>
+                                        <div class="text-2xl font-bold text-gray-800">319</div>
+                                        <div class="text-xs text-gray-600">job offers in Business Development</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-gray-800">265</div>
+                                        <div class="text-xs text-gray-600">job offers in Marketing & Communication</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-gray-800">324</div>
+                                        <div class="text-xs text-gray-600">job offers in Project Management</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search by Category -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">Search by Category</h2>
+                    <p class="text-gray-600 mt-1">Search your career opportunity with our categories</p>
+                </div>
+                <a href="#" class="text-blue-600 font-medium hover:text-blue-700">All Categories <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Category Cards -->
+                <div class="bg-blue-50 rounded-xl p-6 text-center card-hover category-card cursor-pointer">
+                    <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Business Development</h3>
+                    <p class="text-xs text-gray-500">2 open positions</p>
+                </div>
+                
+                <div class="bg-blue-50 rounded-xl p-6 text-center card-hover category-card cursor-pointer">
+                    <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hard-hat text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Construction</h3>
+                    <p class="text-xs text-gray-500">0 open positions</p>
+                </div>
+                
+                <div class="bg-blue-50 rounded-xl p-6 text-center card-hover category-card cursor-pointer">
+                    <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-comments text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Customer Service</h3>
+                    <p class="text-xs text-gray-500">2 open positions</p>
+                </div>
+                
+                <div class="bg-blue-50 rounded-xl p-6 text-center card-hover category-card cursor-pointer">
+                    <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Finance</h3>
+                    <p class="text-xs text-gray-500">1 open positions</p>
+                </div>
+                
+                <div class="bg-blue-50 rounded-xl p-6 text-center card-hover category-card cursor-pointer">
+                    <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heartbeat text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Healthcare</h3>
+                    <p class="text-xs text-gray-500">0 open positions</p>
+                </div>
+                
+                <div class="bg-blue-50 rounded-xl p-6 text-center card-hover category-card cursor-pointer">
+                    <div class="bg-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Human Resources</h3>
+                    <p class="text-xs text-gray-500">1 open positions</p>
+                </div>
+            </div>
+            
+            <!-- Pagination Dots -->
+            <div class="flex justify-center mt-8 space-x-2">
+                <div class="dot-indicator dot-active"></div>
+                <div class="dot-indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Job Offers -->
+    <section class="py-16 bg-yellow-50">
+        <div class="container mx-auto px-4">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Featured Job Offers</h2>
+                <p class="text-gray-600 mt-1">Search your career opportunity through 12,800 jobs</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Job Card 1 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-briefcase text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Finance</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Financial Analyst</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>San Diego, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Full Time</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 8, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Onramware</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-gray-100 rounded-lg p-2">
+                            <i class="fab fa-instagram text-xl text-gray-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 2 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-laptop-code text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Software Engineering</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Fullstack Web Developer</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>San Francisco, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Internship</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 8, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Syspressoft</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-blue-100 rounded-lg p-2">
+                            <i class="fab fa-docker text-xl text-blue-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 3 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-users text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Human Resources</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Human Resources Coordinator</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>San Francisco, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Full Time</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 6, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Datashes</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-blue-100 rounded-lg p-2">
+                            <i class="fab fa-spotify text-xl text-blue-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 4 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-briefcase text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Business Development</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Technical Writer</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>Los Angeles, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Remote</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 7, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Craftgenics</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-orange-100 rounded-lg p-2">
+                            <i class="fab fa-reddit text-xl text-orange-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 5 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-laptop-code text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Software Engineering</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Javascript Developer</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>San Francisco, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Full Time</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 7, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Syspressoft</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-blue-100 rounded-lg p-2">
+                            <i class="fab fa-docker text-xl text-blue-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 6 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-comments text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Customer Service</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Technical Support Engineer</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>San Diego, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Part Time</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 1, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Illuminate Studio</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-orange-100 rounded-lg p-2">
+                            <i class="fas fa-cogs text-xl text-orange-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 7 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-project-diagram text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Project Management</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Software Engineering Team Leader</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>Los Angeles, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Contract</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 1, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Codebolics</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-blue-100 rounded-lg p-2">
+                            <i class="fab fa-spotify text-xl text-blue-800"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Card 8 -->
+                <div class="bg-white rounded-xl p-5 shadow-md border border-gray-100 job-card">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-microphone-alt text-blue-500 text-xs"></i>
+                            <span class="text-xs text-gray-500">Marketing & Communication</span>
+                        </div>
+                        <i class="far fa-heart text-gray-400 hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Senior Editor</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-3">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>San Francisco, CA</span>
+                        <span class="mx-2">•</span>
+                        <span>Full Time</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="text-xs text-gray-500">June 6, 2022 by</div>
+                        <div class="text-xs font-medium text-gray-800">Artiste Studio</div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <div class="bg-green-100 rounded-lg p-2">
+                            <i class="fab fa-slack text-xl text-green-800"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Button -->
+            <div class="mt-8 text-center">
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                    All Job Offers <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Jobster</h3>
+                    <p class="text-gray-400 mb-4">Find your dream job with us. We connect talented professionals with great companies.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#" class="hover:text-white">Find Jobs</a></li>
+                        <li><a href="#" class="hover:text-white">Companies</a></li>
+                        <li><a href="#" class="hover:text-white">Candidates</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Subscribe</h4>
+                    <p class="text-gray-400 mb-4">Get the latest job listings and career tips delivered to your inbox.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-3 py-2 bg-gray-700 text-white rounded-l-md focus:outline-none">
+                        <button type="submit" class="bg-blue-600 px-3 py-2 rounded-r-md hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Jobster. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactivity for demo purposes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const categoryCards = document.querySelectorAll('.category-card');
+            const jobCards = document.querySelectorAll('.job-card');
+            
+            categoryCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.backgroundColor = '#e0f0ff';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.backgroundColor = '#f0f9ff';
+                });
+            });
+            
+            jobCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.borderColor = '#3b82f6';
+                    card.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.05)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.borderColor = '#f3f4f6';
+                    card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                });
+            });
+            
+            // Toggle heart icons
+            const hearts = document.querySelectorAll('.fa-heart');
+            hearts.forEach(heart => {
+                heart.addEventListener('click', () => {
+                    if (heart.classList.contains('far')) {
+                        heart.classList.remove('far');
+                        heart.classList.add('fas');
+                        heart.style.color = '#dc2626';
+                    } else {
+                        heart.classList.remove('fas');
+                        heart.classList.add('far');
+                        heart.style.color = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
